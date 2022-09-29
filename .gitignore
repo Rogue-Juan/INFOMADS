@@ -1,3 +1,10 @@
-
+/.vs
 *.ini
 *.pyc
+*.vsidx
+*.suo
+*.sqlite
+*.cache
+*.lock
+*./obj
+*./bin
