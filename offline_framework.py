@@ -38,6 +38,8 @@ with open('testInstance.txt') as f:
         except:
             if length in ["infinity","inf"]:
                 infinite_interruption = True
+                #infinity is marked by -1
+                length = -1     
             else:
                 raise ValueError("Wrongful input for interruption length")
         finally:
@@ -52,9 +54,27 @@ with open('testInstance.txt') as f:
     else:
         number_of_blocks = number_of_interruptions + 1
     
-    # [TODO]: sort interruptions by starting time
+    # sort interruptions by starting time
+    interruptions = sorted(interruptions, key=lambda x: x[0])
+     
+    # calculate capacity of each block
+    block_capacities = []
+    start = 0
+    end = 0
+    for i in range(number_of_interruptions): 
+        end += interruptions[i][0]
+        block_capacities.append(end - start)
+        
+        #final interruption may be of infinite length
+        if interruptions[i][1] != -1:
+            end += interruptions[i][1]
+            start += end
+
+    if infinite_interruption == True:
+        number_of_blocks = number_of_interruptions
+    else:
+        number_of_blocks = number_of_interruptions + 1
     
-    # [TODO]: calculate capacity of each block
     # blocks = [capacity1, capacity2, capacity3]; index is the block number, length is total number of blocks
     
     block_price = np.zeros([number_of_images,number_of_blocks])
