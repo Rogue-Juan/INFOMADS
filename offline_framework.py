@@ -1,7 +1,7 @@
 # this is the file where we input the situation and get the output solution
 
 import numpy as np
-from offline_ILP_algorithm import solve_ilp
+#from offline_ILP_algorithm import solve_ilp
 
 
 
@@ -52,6 +52,10 @@ with open('testInstance1.txt') as f:
     print("images:",images)
     print("interruptions:",interruptions)
     
+    interruptions = sorted(interruptions, key=lambda x: x[0])
+    print("interruptions:",interruptions)
+
+
     if infinite_interruption == True:
         number_of_blocks = number_of_interruptions
     else:
@@ -92,7 +96,7 @@ with open('testInstance1.txt') as f:
     print(block_price)
     
     
-    solve_ilp(images)
+   # solve_ilp(images)
     
     
     
