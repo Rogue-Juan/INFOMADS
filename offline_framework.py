@@ -96,7 +96,7 @@ with open('testInstance1.txt') as f:
     print(block_price)
     
     
-   # solve_ilp(images)
+   # solve_ilp(images, blocks)
     
     
     
