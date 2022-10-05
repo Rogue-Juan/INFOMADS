@@ -8,17 +8,20 @@ from scipy import optimize
 #from scipy.optimize import milp
 
 
-def solve_ilp(images, blocks):
-    if not (isinstance(images,np.ndarray) or isinstance(blocks,np.ndarray)):
-        images = np.array(images); blocks = np.array(blocks)
+def solve_ilp(image_sizes,
+              block_capacities
+              # penalty_scores
+              ):
+    if not (isinstance(image_sizes,np.ndarray) or isinstance(block_capacities,np.ndarray)):
+        image_sizes = np.array(image_sizes); block_capacities = np.array(block_capacities)
 
-    sizes = images 
+    sizes = image_sizes 
     values = sizes
     
     bounds = optimize.Bounds(0,1)
     integrality = np.full_like(values, True)
     
-    capacity = blocks
+    capacity = block_capacities
     constraints = optimize.LinearConstraint(A = sizes, lb = 0, ub = 30)
     
     res = scipy.optimize.milp(c = -values, constraints = constraints, integrality = integrality, bounds = bounds)
