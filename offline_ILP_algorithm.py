@@ -14,11 +14,12 @@ def solve_ilp(images, blocks):
     integrality = np.full_like(values, True)
     
     capacity = blocks
-    constraints = optimize.LinearConstraint(A = sizes, lb = 0, ub = capacity)
+    constraints = optimize.LinearConstraint(A = sizes, lb = 0, ub = 30)
     
     res = scipy.optimize.milp(c = -values, constraints = constraints, integrality = integrality, bounds = bounds)
     
     return res
 
-solve_ilp([5,3,4], [20,5])
+res = solve_ilp(np.array([5,3,4]), np.array([20,5]))
+print(res.x)
     
