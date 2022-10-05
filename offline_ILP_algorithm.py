@@ -10,7 +10,7 @@ from scipy import optimize
 
 def solve_ilp(images, blocks):
     if not (isinstance(images,np.ndarray) or isinstance(blocks,np.ndarray)):
-        raise exception("Input is not a numpy array")
+        images = np.array(images); blocks = np.array(blocks)
 
     sizes = images 
     values = sizes
@@ -25,6 +25,6 @@ def solve_ilp(images, blocks):
     
     return res
 
-res = solve_ilp(np.array([5,3,4]), np.array([20,5]))
-#print(res.x)
+res = solve_ilp([5,3,4], [20,5])
+print(res.x)
     
