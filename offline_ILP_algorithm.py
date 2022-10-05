@@ -1,5 +1,7 @@
 # this is the file where we implement the ILP solver algorithm
 
+from array import array
+from logging import exception
 import scipy
 import numpy as np
 from scipy import optimize
@@ -7,6 +9,9 @@ from scipy import optimize
 
 
 def solve_ilp(images, blocks):
+    if not (isinstance(images,np.ndarray) or isinstance(blocks,np.ndarray)):
+        raise exception("Input is not a numpy array")
+
     sizes = images 
     values = sizes
     
@@ -21,5 +26,5 @@ def solve_ilp(images, blocks):
     return res
 
 res = solve_ilp(np.array([5,3,4]), np.array([20,5]))
-print(res.x)
+#print(res.x)
     
