@@ -80,19 +80,7 @@ with open('testInstance1.txt') as f:
             
 # blocks = [capacity1, capacity2, capacity3]; index is the block number, length is total number of blocks
     
-
-# create 2D matrix of block prices: the price of image i in block j
-
-    block_price = np.zeros([number_of_images,number_of_blocks])
-    
-    
-    
-    for image in range(len(block_price)):
-        for block in range(len(block_price[0])):
-            block_price[image,block] = images[image] * (block+1)
-            
-    print("block prices:")
-    print(block_price)
+        
     
     
    # solve_ilp(images, blocks)
