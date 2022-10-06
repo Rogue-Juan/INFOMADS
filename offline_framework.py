@@ -7,7 +7,7 @@ from offline_ILP_algorithm import solve_ilp
 
 # acquire data from txt file
 
-with open('testInstance3.txt') as f:
+with open('testInstance1.txt') as f:
     try:
         number_of_images = int(f.readline())
     except:
