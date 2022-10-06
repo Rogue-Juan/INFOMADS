@@ -1,13 +1,13 @@
 # this is the file where we input the situation and get the output solution
 
 import numpy as np
-#from offline_ILP_algorithm import solve_ilp
+from offline_ILP_algorithm import solve_ilp
 
 
 
 # acquire data from txt file
 
-with open('testInstance1.txt') as f:
+with open('testInstance3.txt') as f:
     try:
         number_of_images = int(f.readline())
     except:
@@ -39,12 +39,12 @@ with open('testInstance1.txt') as f:
         
         try:
             length = float(length)
-        except:
-            if length in ["infinity","inf"]:
+            if length == float('inf'):
                 infinite_interruption = True
+                print('infinite interruption present')
                 length = np.Inf
-            else:
-                raise ValueError("Wrongful input for interruption length")
+        except:
+            raise ValueError("Wrongful input for interruption length")
         finally:
             interruptions.append((start_time,length))
     
@@ -70,7 +70,7 @@ with open('testInstance1.txt') as f:
     
     for i in range(number_of_blocks):           
         if i < number_of_interruptions:
-            blocks[i] = blockstart + interruptions[i][1]
+            blocks[i] = interruptions[i][0] - blockstart
             blockstart = interruptions[i][0] + interruptions[i][1]
         else:
             blocks[i] = np.Inf
@@ -83,7 +83,8 @@ with open('testInstance1.txt') as f:
         
     
     
-   # solve_ilp(images, blocks)
+solution = solve_ilp(images, blocks)
+print(solution.x)
     
     
     
