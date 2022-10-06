@@ -110,32 +110,31 @@ with open('testInstance1.txt') as f:
 
    # Parsing ILP solution to required solution format
 
-   ## output validation: has a solution be found?
+   # output validation: has a solution be found?
 
-   ## expecting a 2D-array of decision variables, row i for image i and column j for block j
-   ## images contains image lengths in input order, blocks contains the capacities of blocks in input from 0 to m, 
-   ## interruptions contains tuples of (starting time, length) in input order, inf_interruption bool for marking finite and infinite transmission space 
     image_starting_times = [0] * number_of_images
     t = 0
     k = 0
-    images_output = ""
     for j in range(number_of_blocks):
         for i in range(number_of_images):
-            if solution.x[i][j] == 1:
+            if solution.x[i * number_of_blocks + j] == 1:
                 image_starting_times[i] = t
                 t += images[i]
-        #check infinity
+        
         if k >= number_of_interruptions: pass
         next_interruption = interruptions[k]
+        
         if next_interruption[1] == np.inf: pass
         t = next_interruption[0] + next_interruption[1]
         k += 1
-        
-
+    
+    #output format: endtime, then n lines with start times of images (in input order)
+    with open("solution.txt", 'w') as f:
+        f.write(t)
+        for i in range(number_of_images):
+            f.write("\n" + image_starting_times[i])
    
-    ##output format:
-        # endtime
-        # n lines with start times of images (in input order)
+   
 
     
     
