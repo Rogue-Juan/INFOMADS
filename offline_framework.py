@@ -1,7 +1,7 @@
 # this is the file where we input the situation and get the output solution
 
 import numpy as np
-#from offline_ILP_algorithm import solve_ilp
+from offline_ILP_algorithm import solve_ilp
 
 
 
@@ -39,12 +39,12 @@ with open('testInstance1.txt') as f:
         
         try:
             length = float(length)
-        except:
-            if length in ["infinity","inf"]:
+            if length == float('inf'):
                 infinite_interruption = True
+                print('infinite interruption present')
                 length = np.Inf
-            else:
-                raise ValueError("Wrongful input for interruption length")
+        except:
+            raise ValueError("Wrongful input for interruption length")
         finally:
             interruptions.append((start_time,length))
     
@@ -70,7 +70,7 @@ with open('testInstance1.txt') as f:
     
     for i in range(number_of_blocks):           
         if i < number_of_interruptions:
-            blocks[i] = blockstart + interruptions[i][1]
+            blocks[i] = interruptions[i][0] - blockstart
             blockstart = interruptions[i][0] + interruptions[i][1]
         else:
             blocks[i] = np.Inf
@@ -80,22 +80,11 @@ with open('testInstance1.txt') as f:
             
 # blocks = [capacity1, capacity2, capacity3]; index is the block number, length is total number of blocks
     
-
-# create 2D matrix of block prices: the price of image i in block j
-
-    block_price = np.zeros([number_of_images,number_of_blocks])
+        
     
     
-    
-    for image in range(len(block_price)):
-        for block in range(len(block_price[0])):
-            block_price[image,block] = images[image] * (block+1)
-            
-    print("block prices:")
-    print(block_price)
-    
-    
-   # solve_ilp(images, blocks)
+solution = solve_ilp(images, blocks)
+print(solution.x)
     
     
     
