@@ -48,7 +48,6 @@ with open('testInstance1.txt') as f:
         finally:
             interruptions.append((start_time,length))
     
-    images = np.sort(images)        # sorts from smallest to largest
     print("images:",images)
     print("interruptions:",interruptions)
     
