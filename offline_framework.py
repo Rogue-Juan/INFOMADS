@@ -1,11 +1,13 @@
 # this is the file where we input the situation and get the output solution
 
+from cmath import inf
 import numpy as np
 #from offline_ILP_algorithm import solve_ilp
 
 
 
 # acquire data from txt file
+number_of_images = 0
 
 with open('testInstance1.txt') as f:
     try:
@@ -96,9 +98,45 @@ with open('testInstance1.txt') as f:
     print(block_price)
     
     
-   # solve_ilp(images)
-    
-    
+   # solve_ilp(images) --> scipy.optimize.milp(c, *, integrality=None, bounds=None, constraints=None, options=None)
+   # returns a scipy.optimize.OptimizeResult object having the following attributes:
+   #    status: 0 = optimal s found, 1 = iteration/time limit reached, 2 = problem infeasible
+   #             3= problem unbounded and 4 = other
+   #    success: T/F
+   #    message: exit status description
+   #    x (ndarray): values of decision variables 
+   #    fun: optimal value
+    solution = solve_ilp(images)     
+
+   # Parsing ILP solution to required solution format
+
+   ## output validation: has a solution be found?
+
+   ## expecting a 2D-array of decision variables, row i for image i and column j for block j
+   ## images contains image lengths in input order, blocks contains the capacities of blocks in input from 0 to m, 
+   ## interruptions contains tuples of (starting time, length) in input order, inf_interruption bool for marking finite and infinite transmission space 
+    image_starting_times = [0] * number_of_images
+    t = 0
+    k = 0
+    images_output = ""
+    for j in range(number_of_blocks):
+        for i in range(number_of_images):
+            if solution.x[i][j] == 1:
+                image_starting_times[i] = t
+                t += images[i]
+        #check infinity
+        if k >= number_of_interruptions: pass
+        next_interruption = interruptions[k]
+        if next_interruption[1] == np.inf: pass
+        t = next_interruption[0] + next_interruption[1]
+        k += 1
+        
+
+   
+    ##output format:
+        # endtime
+        # n lines with start times of images (in input order)
+
     
     
     
