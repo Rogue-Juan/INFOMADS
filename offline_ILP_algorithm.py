@@ -14,20 +14,24 @@ def solve_ilp(image_sizes,
               ):
     if not (isinstance(image_sizes,np.ndarray) or isinstance(block_capacities,np.ndarray)):
         image_sizes = np.array(image_sizes); block_capacities = np.array(block_capacities)
-
-    sizes = image_sizes 
-    values = sizes
     
     bounds = optimize.Bounds(0,1)
-    integrality = np.full_like(values, True)
+    integrality = np.full_like(image_sizes, True)
     
-    capacity = block_capacities
-    constraints = optimize.LinearConstraint(A = sizes, lb = 0, ub = 30)
+    bigA = np.ndarray( shape = (len(block_capacities), len(image_sizes)) )
+    for i in range(len(block_capacities)):
+        bigA[i] = image_sizes
+
+    print(bigA)
+    constraints = optimize.LinearConstraint(A = bigA, lb = 0, ub = block_capacities)
     
-    res = scipy.optimize.milp(c = -values, constraints = constraints, integrality = integrality, bounds = bounds)
+    res = scipy.optimize.milp(c = -image_sizes
+                             , constraints = constraints
+                             , integrality = integrality
+                             , bounds = bounds)
     
     return res
 
 res = solve_ilp([5,3,4], [20,5])
-print(res.x)
+print("Result is:\n",res.x)
     
