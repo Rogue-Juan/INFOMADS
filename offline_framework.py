@@ -110,7 +110,13 @@ with open('testInstance1.txt') as f:
 
    # Parsing ILP solution to required solution format
 
-   # output validation: has a solution be found?
+for i in range(number_of_images*number_of_blocks):
+    if solution.x[i] == 1:
+        whichImage = int(i / number_of_blocks) # index starts from 0
+        whichBlock = i % number_of_blocks # in case of 6 blocks: goes from 0 to 5
+        imageStarts[whichImage] = blockStarts[whichBlock]
+        print(imageStarts[whichImage])
+        blockStarts[whichBlock] += images[whichImage]
 
     image_starting_times = [0] * number_of_images
     t = 0
