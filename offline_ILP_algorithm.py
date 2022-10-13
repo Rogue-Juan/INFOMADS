@@ -64,6 +64,6 @@ def solve_ilp(image_sizes,
     
     return res
 
-res = solve_ilp([5,3,4], [5,5,5])
-print("Result is:\n",res.x)
+# res = solve_ilp([5,3,4], [5,5,5])
+# print("Result is:\n",res.x)
     

@@ -4,7 +4,7 @@ from decimal import ROUND_UP
 import numpy as np
 from offline_ILP_algorithm import solve_ilp
 
-
+decimalPrecision = 0
 
 # acquire data from txt file
 filename = 'testInstance2'
@@ -18,7 +18,13 @@ with open(filename+".txt") as f:
     
     for i in range(number_of_images):
         try:
-            image = float(f.readline())
+            image = f.readline()
+            decimals = image.split('.')
+            if len(decimals) == 2:
+                if len(decimals[1]) > decimalPrecision:
+                    decimalPrecision = len(decimals[1])
+
+            image = float(image)
         except:
             raise ValueError("Wrongful input for image size")
         finally:
@@ -34,11 +40,19 @@ with open(filename+".txt") as f:
         start_time, length = line.strip().split(', ')
         
         try:
+            decimals = start_time.split('.')
+            if len(decimals) == 2:
+                if len(decimals[1]) > decimalPrecision:
+                    decimalPrecision = len(decimals[1])
             start_time = float(start_time)
         except:
             raise ValueError("Wrongful input for interruption start time")
         
         try:
+            decimals = length.split('.')
+            if len(decimals) == 2:
+                if len(decimals[1]) > decimalPrecision:
+                    decimalPrecision = len(decimals[1])
             length = float(length)
             if length == float('inf'):
                 infinite_interruption = True
@@ -75,6 +89,7 @@ with open(filename+".txt") as f:
         if i < number_of_interruptions:
             blocks[i] = interruptions[i][0] - blockstart
             blockstart = interruptions[i][0] + interruptions[i][1]
+            #print(blockstart)
             blockStarts[i+1] = blockstart
         else:
             blocks[i] = np.Inf
@@ -94,10 +109,20 @@ for i in range(number_of_images*number_of_blocks):
         whichImage = int(np.floor(i / number_of_blocks)) # index starts from 0
         whichBlock = int(i % number_of_blocks) # in case of 6 blocks: goes from 0 to 5
         imageStarts[whichImage] = float(blockStarts[whichBlock])
-        print(imageStarts[whichImage])
+        #print(imageStarts[whichImage])
         blockStarts[whichBlock] += images[whichImage]
 
 score = imageStarts[-1] + images[-1] # [-1] accesses last elements in arrays.
+
+#string formatting
+
+imageStarts = np.around(imageStarts, decimals = decimalPrecision)
+imageStarts = imageStarts.astype('str')
+for i in range(len(imageStarts)):
+    imageStarts[i] = imageStarts[i].rstrip('0').rstrip('.')
+
+score = np.around(score, decimals = decimalPrecision)
+score = str(score).rstrip('0').rstrip('.')
 
 with open(filename+"_sol.txt", 'w') as f:
     f.write(str(score)+'\n')
