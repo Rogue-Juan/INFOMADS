@@ -125,6 +125,6 @@ score = np.around(score, decimals = decimalPrecision)
 score = str(score).rstrip('0').rstrip('.')
 
 with open(filename+"_sol.txt", 'w') as f:
-    f.write(str(score)+'\n')
+    f.write(str(score))
     for i in range(number_of_images):
-        f.write(str(imageStarts[i])+'\n')
+        f.write('\n'+str(imageStarts[i]))
