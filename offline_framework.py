@@ -7,7 +7,7 @@ from offline_ILP_algorithm import solve_ilp
 decimalPrecision = 0
 
 # acquire data from txt file
-filename = 'testInstance2'
+filename = 'Testinstances/Instance4_2'
 with open(filename+".txt") as f:
     try:
         number_of_images = int(f.readline())
@@ -101,18 +101,27 @@ with open(filename+".txt") as f:
     
 
 solution = solve_ilp(images, blocks)
-
+#print(solution.x, sum(solution.x))
+solutionX = np.round(solution.x, decimals=0)
+#print(solutionX, sum(solutionX))
 imageStarts = np.zeros(number_of_images)
 
+lastImage = 0
+latestTime = 0
+
 for i in range(number_of_images*number_of_blocks):
-    if solution.x[i] == 1:
+    if solutionX[i] == 1:
         whichImage = int(np.floor(i / number_of_blocks)) # index starts from 0
         whichBlock = int(i % number_of_blocks) # in case of 6 blocks: goes from 0 to 5
         imageStarts[whichImage] = float(blockStarts[whichBlock])
         #print(imageStarts[whichImage])
+        if imageStarts[whichImage] > latestTime:
+            latestTime = imageStarts[whichImage]
+            lastImage = whichImage
+
         blockStarts[whichBlock] += images[whichImage]
 
-score = imageStarts[-1] + images[-1] # [-1] accesses last elements in arrays.
+score = latestTime + images[lastImage]
 
 #string formatting
 
