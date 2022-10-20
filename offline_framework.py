@@ -7,7 +7,7 @@ from offline_ILP_algorithm import solve_ilp
 decimalPrecision = 0
 
 # acquire data from txt file
-filename = 'Testinstances/Instance'
+filename = 'Testinstances/Test Instance 1'
 with open(filename+".txt") as f:
     try:
         number_of_images = int(f.readline())
