@@ -7,7 +7,7 @@ from offline_ILP_algorithm import solve_ilp
 decimalPrecision = 0
 
 # acquire data from txt file
-filename = 'Testinstances/Instance4_2'
+filename = 'Testinstances/testInstance2'
 with open(filename+".txt") as f:
     try:
         number_of_images = int(f.readline())
@@ -137,3 +137,4 @@ with open(filename+"_sol.txt", 'w') as f:
     f.write(str(score))
     for i in range(number_of_images):
         f.write('\n'+str(imageStarts[i]))
+    print(score)

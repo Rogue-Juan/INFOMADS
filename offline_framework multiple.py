@@ -1,17 +1,25 @@
 # this is the file where we input the situation and get the output solution
 
+import time
 from decimal import ROUND_UP
 import numpy as np
 from offline_ILP_algorithm import solve_ilp
 
 decimalPrecision = 0
 
-# acquire data from txt file
+start_time_total = time.perf_counter()
+
+instance_times = []
 
 for i in range(99):
     filename = 'Testinstances/small-instance.'+str(i+1)
     print ("solving", filename)
 #filename = 'Testinstances/testInstance1'
+
+    start_time_instance = time.perf_counter()
+
+    # acquire data from txt file
+ #   filename = 'Testinstances/Instance4_2'
     with open(filename+".txt") as f:
         try:
             number_of_images = int(f.readline())
@@ -105,18 +113,27 @@ for i in range(99):
         
 
     solution = solve_ilp(images, blocks)
-
+    #print(solution.x, sum(solution.x))
+    solutionX = np.round(solution.x, decimals=0)
+    #print(solutionX, sum(solutionX))
     imageStarts = np.zeros(number_of_images)
 
+    lastImage = 0
+    latestTime = 0
+
     for i in range(number_of_images*number_of_blocks):
-        if solution.x[i] == 1:
+        if solutionX[i] == 1:
             whichImage = int(np.floor(i / number_of_blocks)) # index starts from 0
             whichBlock = int(i % number_of_blocks) # in case of 6 blocks: goes from 0 to 5
             imageStarts[whichImage] = float(blockStarts[whichBlock])
             #print(imageStarts[whichImage])
+            if imageStarts[whichImage] > latestTime:
+                latestTime = imageStarts[whichImage]
+                lastImage = whichImage
+
             blockStarts[whichBlock] += images[whichImage]
 
-    score = imageStarts[-1] + images[-1] # [-1] accesses last elements in arrays.
+    score = latestTime + images[lastImage]
 
     #string formatting
 
@@ -128,8 +145,16 @@ for i in range(99):
     score = np.around(score, decimals = decimalPrecision)
     score = str(score).rstrip('0').rstrip('.')
 
-    with open(filename+"_sol.txt", 'w') as f:
+    with open(filename+"_sol2.txt", 'w') as f:
         f.write(str(score))
         for i in range(number_of_images):
             f.write('\n'+str(imageStarts[i]))
-        print("score:",score)
+        print("score:",score)            
+
+    end_time_instance = time.perf_counter()
+
+    instance_times.append(end_time_instance - start_time_instance)
+
+end_time_total = time.perf_counter()
+print("total time:", end_time_total - start_time_total)
+print("average instance solution time:", sum(instance_times)/len(instance_times))
