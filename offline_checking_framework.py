@@ -7,15 +7,24 @@ from offline_ILP_algorithm import solve_ilp
 
 decimalPrecision = 0
 
+
+#create output file for solution-instance comparison
+output = open(os.getcwd() + '/output.txt', 'w')
+
 # acquire data from txt file
-path_of_the_directory = os.getcwd() + "/Testinstances"
-object = os.scandir(path_of_the_directory)
+path_test_instances_dir = os.getcwd() + "/Testinstances"
+object = os.scandir(path_test_instances_dir)
+count = 0
 for test_instance in object :
-    with open(path_of_the_directory + "/" + test_instance.name) as f:
+    count += 1
+    print("Test {}: {}".format(count, test_instance.name))
+    output.write("Test {}: {} \n".format(count, test_instance.name))
+    with open(path_test_instances_dir + "/" + test_instance.name, encoding= 'utf-8-sig') as f:
         try:
+            #number_of_images_string = f.readline()
             number_of_images = int(f.readline())
         except:
-            raise ValueError("Wrongful input for number of images")
+            raise ValueError("Wrongful input for number of images.")
         finally:
             images = np.empty(number_of_images)
     
@@ -39,8 +48,8 @@ for test_instance in object :
         infinite_interruption = False
     
         for i in range(number_of_interruptions):
-            line = f.readline()
-            start_time, length = line.strip().split(', ')
+            lines = f.readline().strip().split(',')
+            start_time, length = lines[0].rstrip(), lines[1].rstrip()
         
             try:
                 decimals = start_time.split('.')
@@ -79,7 +88,7 @@ for test_instance in object :
             number_of_blocks = number_of_interruptions + 1
 
 
-        # calculate capacity of each block
+    # calculate capacity of each block
 
         blocks = np.zeros(number_of_blocks)
         blockStarts = np.zeros(number_of_blocks)
@@ -97,25 +106,35 @@ for test_instance in object :
             else:
                 blocks[i] = np.Inf
             
-         # print("block capacities:")
-         # print(blocks)
+        # print("block capacities:")
+        # print(blocks)
             
-         # blocks = [capacity1, capacity2, capacity3]; index is the block number, length is total number of blocks
+        # blocks = [capacity1, capacity2, capacity3]; index is the block number, length is total number of blocks
     
-        solution = solve_ilp(images, blocks)
 
+        solution = solve_ilp(images, blocks)
+        #print(solution.x, sum(solution.x))
+        solutionX = np.round(solution.x, decimals=0)
+        #print(solutionX, sum(solutionX))
         imageStarts = np.zeros(number_of_images)
 
+        lastImage = 0
+        latestTime = 0
+
         for i in range(number_of_images*number_of_blocks):
-            if solution.x[i] == 1:
+            if solutionX[i] == 1:
                 whichImage = int(np.floor(i / number_of_blocks)) # index starts from 0
                 whichBlock = int(i % number_of_blocks) # in case of 6 blocks: goes from 0 to 5
                 imageStarts[whichImage] = float(blockStarts[whichBlock])
                 #print(imageStarts[whichImage])
+                if imageStarts[whichImage] > latestTime:
+                    latestTime = imageStarts[whichImage]
+                    lastImage = whichImage
+
                 blockStarts[whichBlock] += images[whichImage]
 
-        score = imageStarts[-1] + images[-1] # [-1] accesses last elements in arrays.
-
+        score = latestTime + images[lastImage]
+        score_float = score
         #string formatting
 
         imageStarts = np.around(imageStarts, decimals = decimalPrecision)
@@ -128,12 +147,18 @@ for test_instance in object :
 
         #checking output with solution. Format = endtime, then n lines with start times of images (in input order)
         try:
-            end_time_testinstance = float(f.readline())
+            end_time_testinstance_string = f.readline().rstrip()
         except:
             raise ValueError("Wrongful input for end time test instance")
        
-        if end_time_testinstance == float(score):
+        if float(end_time_testinstance_string) == score_float:
             print(test_instance.name + ": correct") 
+            output.write(test_instance.name + ": correct\n") 
         else:
-            print(test_instance.name + ": incorrect solution. \n \t Either the solution found or the test instance is incorrect.")
+            print("Incorrect solution. Either the solution found or the test instance is incorrect. \n Instance time: " + end_time_testinstance_string + " --- Solver time: " + score)
+            output.write("Incorrect solution. Either the solution found or the test instance is incorrect. \n Instance time: " + end_time_testinstance_string + " --- Solver time: " + score + "\n")
+
+
 object.close()
+
+        
