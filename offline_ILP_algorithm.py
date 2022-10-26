@@ -12,17 +12,23 @@ from scipy import optimize
 def solve_ilp(image_sizes,
               block_capacities
               ):
+# Input: image sizes and block capacities
+# Output: binary vector (numpy float array); given x[i][j] where i is the index of the image
+#         and j the index of the block, the first m values represent the decision variable for
+#         image 1, x[1][1] to x[1][m]; length of vector is the number of blocks * number of images
+
+    # Changes Python lists to Numpy arrays
     if not (isinstance(image_sizes,np.ndarray) or isinstance(block_capacities,np.ndarray)):
         image_sizes = np.array(image_sizes)
         block_capacities = np.array(block_capacities)
 
-    # create 2D matrix of block prices: the price of image i in block j
-
+    # Create 2D matrix of block prices: the price of image i in block j
     penalty_scores = np.zeros([len(image_sizes),len(block_capacities)])
     
     for image in range(len(penalty_scores)):
         for block in range(len(penalty_scores[0])):
             penalty_scores[image,block] = image_sizes[image] * (block+1)
+    # Flatten; solver does not allow matrices
     penalty_scores = penalty_scores.flatten()
    # print(penalty_scores)
     
@@ -44,6 +50,7 @@ def solve_ilp(image_sizes,
 
 #    print(bigA)
 
+    # Capacity constraint for the blocks; the sum of images cannot exceed the capacity of the block
     constraint1 = optimize.LinearConstraint(A = bigA, lb = 0, ub = block_capacities)
 
     bigB = np.zeros((len(image_sizes),len(block_capacities)*len(image_sizes)))
@@ -55,8 +62,10 @@ def solve_ilp(image_sizes,
             count += 1
 
     #print(bigB)
+    # All images are uploaded in some block
     constraint2 = optimize.LinearConstraint(A = bigB, lb = 1, ub = 1)
     
+    # SciPy solver for MILPs
     res = scipy.optimize.milp(c = penalty_scores
                              , constraints = [constraint1,constraint2]
                              , integrality = integrality
@@ -64,6 +73,7 @@ def solve_ilp(image_sizes,
     
     return res
 
+# Small test
 # res = solve_ilp([5,3,4], [5,5,5])
 # print("Result is:\n",res.x)
     
