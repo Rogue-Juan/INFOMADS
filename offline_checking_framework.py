@@ -175,9 +175,9 @@ for test_instance in object :
             raise ValueError("Wrongful input for end time test instance")
        
         #Compare solution to model solution and write result to output
-        if end_time_testinstance_string != score:
+        if not is_feasible or end_time_testinstance_string != score:
             print("Incorrect solution. Feasible: {}.\n Instance time: {} --- Solver time: {}".format(is_feasible, end_time_testinstance_string, score))
-            output.write("Incorrect solution.\n Instance time: " + end_time_testinstance_string + " --- Solver time: " + score + "\n")
+            output.write("Incorrect solution. Feasible: {}.\n Instance time: {} --- Solver time: {}\n".format(is_feasible, end_time_testinstance_string, score))
             #solution_str = ""
             for i in range(number_of_images - 1):
                 output.write(str(imageStarts[i]) + " -- ")
