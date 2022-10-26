@@ -3,10 +3,10 @@
 from decimal import ROUND_UP
 import numpy as np
 import os
+import time
 from offline_ILP_algorithm import solve_ilp
 
 decimalPrecision = 0
-
 
 #create output file for solution-instance comparison
 output = open(os.getcwd() + '/output.txt', 'w')
@@ -14,12 +14,22 @@ output = open(os.getcwd() + '/output.txt', 'w')
 # acquire data from txt file
 path_test_instances_dir = os.getcwd() + "/Testinstances"
 object = os.scandir(path_test_instances_dir)
-count = 0
+
+# Keep track of the problem instance size by recording per instance the number of images and interruptions 
+image_counts = []
+interruption_counts = []
+computation_times = []
+
+instance_count = 0
 for test_instance in object :
-    count += 1
-    print("Test {}: {}".format(count, test_instance.name))
-    output.write("Test {}: {} \n".format(count, test_instance.name))
+    instance_count += 1
+    
+    print("Test {}: {}".format(instance_count, test_instance.name))
+    output.write("Test {}: {} \n".format(instance_count, test_instance.name))
+    
     with open(path_test_instances_dir + "/" + test_instance.name, encoding= 'utf-8-sig') as f:
+        ### Reading input from instance file
+        ###
         try:
             #number_of_images_string = f.readline()
             number_of_images = int(f.readline())
@@ -43,8 +53,11 @@ for test_instance in object :
                 images[i] = image
     
         number_of_interruptions = int(f.readline())
+        
+        ### Preprocessing of input 
+        ###
+        # computing starting times and sizes of interruptions
         interruptions = []
-    
         infinite_interruption = False
     
         for i in range(number_of_interruptions):
@@ -77,25 +90,23 @@ for test_instance in object :
     
         # print("images:",images)
         # print("interruptions:",interruptions)
-    
+        
+        # Interruptions are sorted by their starting times
         interruptions = sorted(interruptions, key=lambda x: x[0])
         # print("interruptions:",interruptions)
-
 
         if infinite_interruption == True:
             number_of_blocks = number_of_interruptions
         else:
             number_of_blocks = number_of_interruptions + 1
 
-
-    # calculate capacity of each block
-
-        blocks = np.zeros(number_of_blocks)
+        # calculate capacity of each block. 
+        blocks = np.zeros(number_of_blocks) # blocks = [capacity1, capacity2, capacity3]; index is the block number, length is total number of blocks
         blockStarts = np.zeros(number_of_blocks)
         blockStarts[0] = 0
         blockstart = 0
     
-        assert len(interruptions) == number_of_interruptions
+        #assert len(interruptions) == number_of_interruptions
     
         for i in range(number_of_blocks):           
             if i < number_of_interruptions:
@@ -108,35 +119,47 @@ for test_instance in object :
             
         # print("block capacities:")
         # print(blocks)
-            
-        # blocks = [capacity1, capacity2, capacity3]; index is the block number, length is total number of blocks
-    
-
+         
+        ### Computing a solution
+        # also measure the computation time
+        t_start = time.time()
         solution = solve_ilp(images, blocks)
-        #print(solution.x, sum(solution.x))
+        t_end = time.time()
+        time_duration = t_end - t_start
+
+        ### Post-processing solution
         solutionX = np.round(solution.x, decimals=0)
-        #print(solutionX, sum(solutionX))
+        
         imageStarts = np.zeros(number_of_images)
+        block_content = np.zeros(number_of_blocks)
 
         lastImage = 0
-        latestTime = 0
+        lastImageStart = 0
 
         for i in range(number_of_images*number_of_blocks):
             if solutionX[i] == 1:
                 whichImage = int(np.floor(i / number_of_blocks)) # index starts from 0
-                whichBlock = int(i % number_of_blocks) # in case of 6 blocks: goes from 0 to 5
+                whichBlock = int(i % number_of_blocks) # in case of 6 blocks: goes from 0 to 5       
                 imageStarts[whichImage] = float(blockStarts[whichBlock])
                 #print(imageStarts[whichImage])
-                if imageStarts[whichImage] > latestTime:
-                    latestTime = imageStarts[whichImage]
+                if imageStarts[whichImage] > lastImageStart:
+                    lastImageStart = imageStarts[whichImage]
                     lastImage = whichImage
 
                 blockStarts[whichBlock] += images[whichImage]
+                #For each block, accumulate the image sizes that occur within it
+                block_content[whichBlock] += images[whichImage]
 
-        score = latestTime + images[lastImage]
+        #Checking feasibility of solver solution
+        is_feasible = True
+        for i in range(number_of_blocks):
+            if block_content[i] > blocks[i]:
+                is_feasible = False
+
+        score = lastImageStart + images[lastImage]
         score_float = score
-        #string formatting
-
+        
+        #Format solution and corresponding completion time to string
         imageStarts = np.around(imageStarts, decimals = decimalPrecision)
         imageStarts = imageStarts.astype('str')
         for i in range(len(imageStarts)):
@@ -145,20 +168,37 @@ for test_instance in object :
         score = np.around(score, decimals = decimalPrecision)
         score = str(score).rstrip('0').rstrip('.')
 
-        #checking output with solution. Format = endtime, then n lines with start times of images (in input order)
+        #Read completion time of model solution from file
         try:
             end_time_testinstance_string = f.readline().rstrip()
         except:
             raise ValueError("Wrongful input for end time test instance")
        
-        if float(end_time_testinstance_string) == score_float:
-            print(test_instance.name + ": correct") 
-            output.write(test_instance.name + ": correct\n") 
+        #Compare solution to model solution and write result to output
+        if end_time_testinstance_string != score:
+            print("Incorrect solution. Feasible: {}.\n Instance time: {} --- Solver time: {}".format(is_feasible, end_time_testinstance_string, score))
+            output.write("Incorrect solution.\n Instance time: " + end_time_testinstance_string + " --- Solver time: " + score + "\n")
+            #solution_str = ""
+            for i in range(number_of_images - 1):
+                output.write(str(imageStarts[i]) + " -- ")
+                #solution_str += str(imageStarts[i]) + " -- "
+            output.write(str(imageStarts[number_of_images - 1]) + "\n")
+            #print(solution_str.rstrip(' -- ') + "\n")
         else:
-            print("Incorrect solution. Either the solution found or the test instance is incorrect. \n Instance time: " + end_time_testinstance_string + " --- Solver time: " + score)
-            output.write("Incorrect solution. Either the solution found or the test instance is incorrect. \n Instance time: " + end_time_testinstance_string + " --- Solver time: " + score + "\n")
-
-
+            print(test_instance.name + ": correct") 
+            output.write(test_instance.name + ": correct\n")
+            # Record input size of problem instance and computation time
+            image_counts.append(number_of_images)
+            interruption_counts.append(number_of_interruptions)
+            computation_times.append(time_duration)
 object.close()
+
+assert(len(image_counts) == len(interruption_counts) & len(interruption_counts) == len(computation_times))
+
+with open(os.getcwd() + '/output_statistics.txt', 'w') as f:
+    f.write("Instance,number of images,number of interruptions, computation time\n")
+    for i in range(len(image_counts)):
+        f.write("{},{},{},{}\n".format(i, image_counts[i], interruption_counts[i], computation_times[i]))
+
 
         

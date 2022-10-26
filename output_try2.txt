@@ -1,0 +1,377 @@
+Test 1: bigger.txt 
+Incorrect solution. Either the solution found or the test instance is incorrect. 
+ Instance time: 199.0 --- Solver time: 199.5
+Test 2: counter.txt 
+counter.txt: correct
+Test 3: counter2.txt 
+counter2.txt: correct
+Test 4: defjy_instance_1.txt 
+Incorrect solution. Either the solution found or the test instance is incorrect. 
+ Instance time: 22.179 --- Solver time: 36.332
+Test 5: defjy_instance_2.txt 
+defjy_instance_2.txt: correct
+Test 6: defjy_instance_3.txt 
+defjy_instance_3.txt: correct
+Test 7: instance.txt 
+instance.txt: correct
+Test 8: instance1.txt 
+Incorrect solution. Either the solution found or the test instance is incorrect. 
+ Instance time: 45 --- Solver time: 41
+Test 9: Instance16_13_12.txt 
+Instance16_13_12.txt: correct
+Test 10: Instance1_2.txt 
+Incorrect solution. Either the solution found or the test instance is incorrect. 
+ Instance time: 171.765 --- Solver time: 172.657
+Test 11: instance2.txt 
+instance2.txt: correct
+Test 12: Instance2_2.txt 
+Instance2_2.txt: correct
+Test 13: instance3.txt 
+instance3.txt: correct
+Test 14: Instance3_2.txt 
+Instance3_2.txt: correct
+Test 15: instance4.txt 
+instance4.txt: correct
+Test 16: Instance4_2.txt 
+Instance4_2.txt: correct
+Test 17: Instance5.txt 
+Instance5.txt: correct
+Test 18: Instance6.txt 
+Instance6.txt: correct
+Test 19: Instance7.txt 
+Instance7.txt: correct
+Test 20: InstanceLastBinEmpty.txt 
+InstanceLastBinEmpty.txt: correct
+Test 21: InstanceManyBins.txt 
+InstanceManyBins.txt: correct
+Test 22: InstanceQuantitiBoi.txt 
+InstanceQuantitiBoi.txt: correct
+Test 23: instance_2.txt 
+instance_2.txt: correct
+Test 24: instance_example_1.txt 
+instance_example_1.txt: correct
+Test 25: small-instance.1.txt 
+Incorrect solution. Either the solution found or the test instance is incorrect. 
+ Instance time: 96.688 --- Solver time: 96.702
+Test 26: small-instance.10.txt 
+small-instance.10.txt: correct
+Test 27: small-instance.100.txt 
+Incorrect solution. Either the solution found or the test instance is incorrect. 
+ Instance time: 105.011 --- Solver time: 105.021
+Test 28: small-instance.11.txt 
+Incorrect solution. Either the solution found or the test instance is incorrect. 
+ Instance time: 90.214 --- Solver time: 90.214
+Test 29: small-instance.12.txt 
+Incorrect solution. Either the solution found or the test instance is incorrect. 
+ Instance time: 113.165 --- Solver time: 113.175
+Test 30: small-instance.13.txt 
+Incorrect solution. Either the solution found or the test instance is incorrect. 
+ Instance time: 92.548 --- Solver time: 92.55
+Test 31: small-instance.14.txt 
+Incorrect solution. Either the solution found or the test instance is incorrect. 
+ Instance time: 128.909 --- Solver time: 128.91
+Test 32: small-instance.15.txt 
+small-instance.15.txt: correct
+Test 33: small-instance.16.txt 
+Incorrect solution. Either the solution found or the test instance is incorrect. 
+ Instance time: 112.413 --- Solver time: 112.419
+Test 34: small-instance.17.txt 
+Incorrect solution. Either the solution found or the test instance is incorrect. 
+ Instance time: 112.44 --- Solver time: 112.437
+Test 35: small-instance.18.txt 
+small-instance.18.txt: correct
+Test 36: small-instance.19.txt 
+Incorrect solution. Either the solution found or the test instance is incorrect. 
+ Instance time: 105.514 --- Solver time: 105.52
+Test 37: small-instance.2.txt 
+Incorrect solution. Either the solution found or the test instance is incorrect. 
+ Instance time: 106.118 --- Solver time: 106.126
+Test 38: small-instance.20.txt 
+Incorrect solution. Either the solution found or the test instance is incorrect. 
+ Instance time: 115.092 --- Solver time: 115.104
+Test 39: small-instance.21.txt 
+Incorrect solution. Either the solution found or the test instance is incorrect. 
+ Instance time: 119.76 --- Solver time: 119.769
+Test 40: small-instance.22.txt 
+Incorrect solution. Either the solution found or the test instance is incorrect. 
+ Instance time: 111.017 --- Solver time: 111.017
+Test 41: small-instance.23.txt 
+Incorrect solution. Either the solution found or the test instance is incorrect. 
+ Instance time: 97.753 --- Solver time: 97.755
+Test 42: small-instance.24.txt 
+small-instance.24.txt: correct
+Test 43: small-instance.25.txt 
+Incorrect solution. Either the solution found or the test instance is incorrect. 
+ Instance time: 100.177 --- Solver time: 100.183
+Test 44: small-instance.26.txt 
+small-instance.26.txt: correct
+Test 45: small-instance.27.txt 
+Incorrect solution. Either the solution found or the test instance is incorrect. 
+ Instance time: 109.467 --- Solver time: 109.479
+Test 46: small-instance.28.txt 
+Incorrect solution. Either the solution found or the test instance is incorrect. 
+ Instance time: 118.753 --- Solver time: 118.773
+Test 47: small-instance.29.txt 
+Incorrect solution. Either the solution found or the test instance is incorrect. 
+ Instance time: 113.296 --- Solver time: 113.303
+Test 48: small-instance.3.txt 
+Incorrect solution. Either the solution found or the test instance is incorrect. 
+ Instance time: 126.963 --- Solver time: 126.969
+Test 49: small-instance.30.txt 
+Incorrect solution. Either the solution found or the test instance is incorrect. 
+ Instance time: 103.233 --- Solver time: 103.237
+Test 50: small-instance.31.txt 
+Incorrect solution. Either the solution found or the test instance is incorrect. 
+ Instance time: 140.83 --- Solver time: 140.83
+Test 51: small-instance.32.txt 
+Incorrect solution. Either the solution found or the test instance is incorrect. 
+ Instance time: 113.789 --- Solver time: 113.8
+Test 52: small-instance.33.txt 
+Incorrect solution. Either the solution found or the test instance is incorrect. 
+ Instance time: 110.858 --- Solver time: 110.859
+Test 53: small-instance.34.txt 
+Incorrect solution. Either the solution found or the test instance is incorrect. 
+ Instance time: 115.49 --- Solver time: 115.498
+Test 54: small-instance.35.txt 
+Incorrect solution. Either the solution found or the test instance is incorrect. 
+ Instance time: 116.715 --- Solver time: 116.719
+Test 55: small-instance.36.txt 
+Incorrect solution. Either the solution found or the test instance is incorrect. 
+ Instance time: 113.704 --- Solver time: 113.704
+Test 56: small-instance.37.txt 
+Incorrect solution. Either the solution found or the test instance is incorrect. 
+ Instance time: 131.63 --- Solver time: 131.639
+Test 57: small-instance.38.txt 
+Incorrect solution. Either the solution found or the test instance is incorrect. 
+ Instance time: 122.511 --- Solver time: 122.523
+Test 58: small-instance.39.txt 
+Incorrect solution. Either the solution found or the test instance is incorrect. 
+ Instance time: 106.995 --- Solver time: 107.003
+Test 59: small-instance.4.txt 
+Incorrect solution. Either the solution found or the test instance is incorrect. 
+ Instance time: 96.371 --- Solver time: 96.381
+Test 60: small-instance.40.txt 
+small-instance.40.txt: correct
+Test 61: small-instance.41.txt 
+Incorrect solution. Either the solution found or the test instance is incorrect. 
+ Instance time: 117.116 --- Solver time: 117.097
+Test 62: small-instance.42.txt 
+Incorrect solution. Either the solution found or the test instance is incorrect. 
+ Instance time: 94.149 --- Solver time: 94.15
+Test 63: small-instance.43.txt 
+small-instance.43.txt: correct
+Test 64: small-instance.44.txt 
+Incorrect solution. Either the solution found or the test instance is incorrect. 
+ Instance time: 108.528 --- Solver time: 108.531
+Test 65: small-instance.45.txt 
+Incorrect solution. Either the solution found or the test instance is incorrect. 
+ Instance time: 114.219 --- Solver time: 114.219
+Test 66: small-instance.46.txt 
+small-instance.46.txt: correct
+Test 67: small-instance.47.txt 
+Incorrect solution. Either the solution found or the test instance is incorrect. 
+ Instance time: 116.349 --- Solver time: 116.35
+Test 68: small-instance.48.txt 
+Incorrect solution. Either the solution found or the test instance is incorrect. 
+ Instance time: 145.208 --- Solver time: 145.292
+Test 69: small-instance.49.txt 
+small-instance.49.txt: correct
+Test 70: small-instance.5.txt 
+Incorrect solution. Either the solution found or the test instance is incorrect. 
+ Instance time: 128.361 --- Solver time: 128.372
+Test 71: small-instance.50.txt 
+Incorrect solution. Either the solution found or the test instance is incorrect. 
+ Instance time: 113.789 --- Solver time: 113.798
+Test 72: small-instance.51.txt 
+small-instance.51.txt: correct
+Test 73: small-instance.52.txt 
+Incorrect solution. Either the solution found or the test instance is incorrect. 
+ Instance time: 113.978 --- Solver time: 113.987
+Test 74: small-instance.53.txt 
+Incorrect solution. Either the solution found or the test instance is incorrect. 
+ Instance time: 119.119 --- Solver time: 119.127
+Test 75: small-instance.54.txt 
+small-instance.54.txt: correct
+Test 76: small-instance.55.txt 
+Incorrect solution. Either the solution found or the test instance is incorrect. 
+ Instance time: 113.37 --- Solver time: 113.378
+Test 77: small-instance.56.txt 
+Incorrect solution. Either the solution found or the test instance is incorrect. 
+ Instance time: 131.435 --- Solver time: 131.442
+Test 78: small-instance.57.txt 
+Incorrect solution. Either the solution found or the test instance is incorrect. 
+ Instance time: 124.269 --- Solver time: 124.275
+Test 79: small-instance.58.txt 
+Incorrect solution. Either the solution found or the test instance is incorrect. 
+ Instance time: 143.395 --- Solver time: 143.407
+Test 80: small-instance.59.txt 
+Incorrect solution. Either the solution found or the test instance is incorrect. 
+ Instance time: 121.6 --- Solver time: 121.601
+Test 81: small-instance.6.txt 
+Incorrect solution. Either the solution found or the test instance is incorrect. 
+ Instance time: 93.995 --- Solver time: 93.992
+Test 82: small-instance.60.txt 
+small-instance.60.txt: correct
+Test 83: small-instance.61.txt 
+Incorrect solution. Either the solution found or the test instance is incorrect. 
+ Instance time: 85.748 --- Solver time: 85.754
+Test 84: small-instance.62.txt 
+small-instance.62.txt: correct
+Test 85: small-instance.63.txt 
+Incorrect solution. Either the solution found or the test instance is incorrect. 
+ Instance time: 119.891 --- Solver time: 119.903
+Test 86: small-instance.64.txt 
+Incorrect solution. Either the solution found or the test instance is incorrect. 
+ Instance time: 120.98 --- Solver time: 120.98
+Test 87: small-instance.65.txt 
+Incorrect solution. Either the solution found or the test instance is incorrect. 
+ Instance time: 126.543 --- Solver time: 126.545
+Test 88: small-instance.66.txt 
+Incorrect solution. Either the solution found or the test instance is incorrect. 
+ Instance time: 122.312 --- Solver time: 122.328
+Test 89: small-instance.67.txt 
+small-instance.67.txt: correct
+Test 90: small-instance.68.txt 
+Incorrect solution. Either the solution found or the test instance is incorrect. 
+ Instance time: 100.208 --- Solver time: 100.209
+Test 91: small-instance.69.txt 
+Incorrect solution. Either the solution found or the test instance is incorrect. 
+ Instance time: 106.539 --- Solver time: 106.542
+Test 92: small-instance.7.txt 
+Incorrect solution. Either the solution found or the test instance is incorrect. 
+ Instance time: 104.472 --- Solver time: 104.478
+Test 93: small-instance.70.txt 
+Incorrect solution. Either the solution found or the test instance is incorrect. 
+ Instance time: 126.54 --- Solver time: 126.56
+Test 94: small-instance.71.txt 
+Incorrect solution. Either the solution found or the test instance is incorrect. 
+ Instance time: 112.047 --- Solver time: 112.051
+Test 95: small-instance.72.txt 
+Incorrect solution. Either the solution found or the test instance is incorrect. 
+ Instance time: 97.131 --- Solver time: 97.131
+Test 96: small-instance.73.txt 
+Incorrect solution. Either the solution found or the test instance is incorrect. 
+ Instance time: 150.562 --- Solver time: 150.563
+Test 97: small-instance.74.txt 
+Incorrect solution. Either the solution found or the test instance is incorrect. 
+ Instance time: 93.93 --- Solver time: 93.941
+Test 98: small-instance.75.txt 
+Incorrect solution. Either the solution found or the test instance is incorrect. 
+ Instance time: 115.122 --- Solver time: 115.231
+Test 99: small-instance.76.txt 
+Incorrect solution. Either the solution found or the test instance is incorrect. 
+ Instance time: 124.989 --- Solver time: 124.99
+Test 100: small-instance.77.txt 
+small-instance.77.txt: correct
+Test 101: small-instance.78.txt 
+Incorrect solution. Either the solution found or the test instance is incorrect. 
+ Instance time: 100.442 --- Solver time: 100.442
+Test 102: small-instance.79.txt 
+Incorrect solution. Either the solution found or the test instance is incorrect. 
+ Instance time: 119.344 --- Solver time: 119.345
+Test 103: small-instance.8.txt 
+Incorrect solution. Either the solution found or the test instance is incorrect. 
+ Instance time: 79.481 --- Solver time: 79.488
+Test 104: small-instance.80.txt 
+Incorrect solution. Either the solution found or the test instance is incorrect. 
+ Instance time: 124.904 --- Solver time: 124.906
+Test 105: small-instance.81.txt 
+Incorrect solution. Either the solution found or the test instance is incorrect. 
+ Instance time: 141.052 --- Solver time: 141.074
+Test 106: small-instance.82.txt 
+small-instance.82.txt: correct
+Test 107: small-instance.83.txt 
+Incorrect solution. Either the solution found or the test instance is incorrect. 
+ Instance time: 110.576 --- Solver time: 110.576
+Test 108: small-instance.84.txt 
+small-instance.84.txt: correct
+Test 109: small-instance.85.txt 
+Incorrect solution. Either the solution found or the test instance is incorrect. 
+ Instance time: 124.581 --- Solver time: 124.582
+Test 110: small-instance.86.txt 
+Incorrect solution. Either the solution found or the test instance is incorrect. 
+ Instance time: 123.709 --- Solver time: 123.712
+Test 111: small-instance.87.txt 
+small-instance.87.txt: correct
+Test 112: small-instance.88.txt 
+small-instance.88.txt: correct
+Test 113: small-instance.89.txt 
+Incorrect solution. Either the solution found or the test instance is incorrect. 
+ Instance time: 137.148 --- Solver time: 137.162
+Test 114: small-instance.9.txt 
+Incorrect solution. Either the solution found or the test instance is incorrect. 
+ Instance time: 92.631 --- Solver time: 92.633
+Test 115: small-instance.90.txt 
+small-instance.90.txt: correct
+Test 116: small-instance.91.txt 
+small-instance.91.txt: correct
+Test 117: small-instance.92.txt 
+Incorrect solution. Either the solution found or the test instance is incorrect. 
+ Instance time: 114.551 --- Solver time: 114.553
+Test 118: small-instance.93.txt 
+Incorrect solution. Either the solution found or the test instance is incorrect. 
+ Instance time: 96.817 --- Solver time: 96.823
+Test 119: small-instance.94.txt 
+Incorrect solution. Either the solution found or the test instance is incorrect. 
+ Instance time: 117.694 --- Solver time: 117.694
+Test 120: small-instance.95.txt 
+Incorrect solution. Either the solution found or the test instance is incorrect. 
+ Instance time: 131.917 --- Solver time: 131.94
+Test 121: small-instance.96.txt 
+Incorrect solution. Either the solution found or the test instance is incorrect. 
+ Instance time: 134.491 --- Solver time: 134.492
+Test 122: small-instance.97.txt 
+Incorrect solution. Either the solution found or the test instance is incorrect. 
+ Instance time: 96.326 --- Solver time: 96.336
+Test 123: small-instance.98.txt 
+Incorrect solution. Either the solution found or the test instance is incorrect. 
+ Instance time: 161.845 --- Solver time: 161.845
+Test 124: small-instance.99.txt 
+Incorrect solution. Either the solution found or the test instance is incorrect. 
+ Instance time: 125.43 --- Solver time: 125.43
+Test 125: smol.txt 
+smol.txt: correct
+Test 126: smol_counter.txt 
+smol_counter.txt: correct
+Test 127: Test Instance 1.txt 
+Incorrect solution. Either the solution found or the test instance is incorrect. 
+ Instance time: 32 --- Solver time: 31
+Test 128: Test Instance 2.txt 
+Test Instance 2.txt: correct
+Test 129: Test Instance.txt 
+Test Instance.txt: correct
+Test 130: TestCaseJamWebTelescope.txt 
+Incorrect solution. Either the solution found or the test instance is incorrect. 
+ Instance time: 79.999 --- Solver time: 79.999
+Test 131: testInstance1.txt 
+testInstance1.txt: correct
+Test 132: testInstance2.txt 
+testInstance2.txt: correct
+Test 133: test_instances_1.txt 
+test_instances_1.txt: correct
+Test 134: test_instances_2.txt 
+test_instances_2.txt: correct
+Test 135: Test_instance_.txt 
+Test_instance_.txt: correct
+Test 136: test_instance_1.txt 
+test_instance_1.txt: correct
+Test 137: test_instance_2.txt 
+test_instance_2.txt: correct
+Test 138: test_instance_3.txt 
+test_instance_3.txt: correct
+Test 139: test_instance_adv_greedy_firstfit.txt 
+test_instance_adv_greedy_firstfit.txt: correct
+Test 140: test_instance_adv_largestfirst.txt 
+test_instance_adv_largestfirst.txt: correct
+Test 141: test_instance_adv_largestsmallestalternating.txt 
+test_instance_adv_largestsmallestalternating.txt: correct
+Test 142: test_instance_adv_smallestfirst.txt 
+test_instance_adv_smallestfirst.txt: correct
+Test 143: test_instance_CZY.txt 
+test_instance_CZY.txt: correct
+Test 144: test_instance_LXL.txt 
+test_instance_LXL.txt: correct
+Test 145: test_instance_LYeh.txt 
+test_instance_LYeh.txt: correct
+Test 146: test_instance_many_intervals.txt 
+test_instance_many_intervals.txt: correct
