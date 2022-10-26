@@ -6,7 +6,6 @@ from turtle import pen
 import scipy
 import numpy as np
 from scipy import optimize
-#from scipy.optimize import milp
 
 
 def solve_ilp(image_sizes,
