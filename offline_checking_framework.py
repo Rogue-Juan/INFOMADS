@@ -154,6 +154,8 @@ for test_instance in object :
         is_feasible = True
         for i in range(number_of_blocks):
             if block_content[i] > blocks[i]:
+                print("Block content exceeds capacity by {}.\n".format(block_content[i] - blocks[i]))
+                output.write("Block content exceeds capacity by {}.\n".format(block_content[i] - blocks[i]))
                 is_feasible = False
 
         score = lastImageStart + images[lastImage]

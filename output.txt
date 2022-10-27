@@ -61,6 +61,7 @@ Incorrect solution. Feasible: True.
  Instance time: 96.688 --- Solver time: 96.702
 2.737 -- 77.889 -- 0 -- 36.449 -- 37.154 -- 5.782 -- 1.281 -- 84.719 -- 87.247 -- 45.887 -- 12.815 -- 18.356 -- 1.863 -- 20.376 -- 88.716 -- 55.465 -- 28.144 -- 60.872 -- 66.428 -- 30.153
 Test 26: small-instance.10.txt 
+Block content exceeds capacity by 7.105427357601002e-15.
 Incorrect solution. Feasible: False.
  Instance time: 97.943 --- Solver time: 97.943
 95.699 -- 80.356 -- 47.754 -- 0 -- 9.613 -- 14.119 -- 17.02 -- 50.994 -- 56.479 -- 66.378 -- 70.771 -- 86.828 -- 23.064 -- 97.09 -- 26.766 -- 32.806 -- 70.832 -- 41.246 -- 93.579 -- 46.928
@@ -123,6 +124,7 @@ Incorrect solution. Feasible: True.
  Instance time: 100.177 --- Solver time: 100.183
 22.828 -- 90.446 -- 49.969 -- 55.816 -- 92.066 -- 25.12 -- 61.833 -- 34.865 -- 50.993 -- 14.807 -- 69.704 -- 14.895 -- 0 -- 4.562 -- 77.543 -- 83.174 -- 16.532 -- 40.034 -- 51.525 -- 96.935
 Test 44: small-instance.26.txt 
+Block content exceeds capacity by 1.0658141036401503e-14.
 Incorrect solution. Feasible: False.
  Instance time: 106.015 --- Solver time: 106.015
 61.566 -- 0 -- 22.231 -- 5.796 -- 93.431 -- 28.032 -- 37.057 -- 7.01 -- 95.708 -- 66.951 -- 46.262 -- 8.992 -- 73.186 -- 48.44 -- 15.329 -- 16.343 -- 54.354 -- 98.504 -- 77.317 -- 84.399
@@ -139,6 +141,7 @@ Incorrect solution. Feasible: True.
  Instance time: 113.296 --- Solver time: 113.303
 73.001 -- 0 -- 9.53 -- 81.535 -- 15.062 -- 83.066 -- 17.559 -- 31.719 -- 32.703 -- 33.299 -- 34.581 -- 39.556 -- 91.326 -- 95.722 -- 44.095 -- 101.476 -- 110.232 -- 112.71 -- 54.032 -- 27.036
 Test 48: small-instance.3.txt 
+Block content exceeds capacity by 1.4210854715202004e-14.
 Incorrect solution. Feasible: False.
  Instance time: 126.963 --- Solver time: 126.969
 0 -- 3.424 -- 43.157 -- 52.972 -- 94.554 -- 104.273 -- 4.316 -- 60.118 -- 8.908 -- 67.703 -- 113.69 -- 14.846 -- 119.276 -- 119.903 -- 22.314 -- 77.077 -- 23.521 -- 78.809 -- 83.82 -- 28.109
@@ -147,10 +150,12 @@ Incorrect solution. Feasible: True.
  Instance time: 103.233 --- Solver time: 103.237
 25.068 -- 46.894 -- 53.153 -- 53.866 -- 54.38 -- 30.931 -- 0 -- 56.759 -- 34.155 -- 64.612 -- 2.283 -- 2.445 -- 70.911 -- 82.496 -- 92.362 -- 97.073 -- 4.068 -- 98.329 -- 13.267 -- 37.085
 Test 50: small-instance.31.txt 
+Block content exceeds capacity by 1.4210854715202004e-14.
 Incorrect solution. Feasible: False.
  Instance time: 140.83 --- Solver time: 140.83
 20.713 -- 117.023 -- 121.415 -- 47.336 -- 83.261 -- 89.591 -- 95.701 -- 0 -- 52.254 -- 60.933 -- 6.782 -- 128.181 -- 70.328 -- 30.271 -- 74.351 -- 137.297 -- 100.233 -- 36.505 -- 100.681 -- 107.193
 Test 51: small-instance.32.txt 
+Block content exceeds capacity by 3.552713678800501e-15.
 Incorrect solution. Feasible: False.
  Instance time: 113.789 --- Solver time: 113.8
 0 -- 4.031 -- 103.543 -- 55.121 -- 64.439 -- 66.62 -- 104.907 -- 8.323 -- 10.726 -- 36.359 -- 44.132 -- 73.53 -- 17.117 -- 79.176 -- 82.699 -- 25.468 -- 44.195 -- 88.248 -- 88.886 -- 46.7
@@ -187,6 +192,7 @@ Incorrect solution. Feasible: True.
 Test 60: small-instance.40.txt 
 small-instance.40.txt: correct
 Test 61: small-instance.41.txt 
+Block content exceeds capacity by 1.7763568394002505e-15.
 Incorrect solution. Feasible: False.
  Instance time: 117.116 --- Solver time: 117.097
 61.89 -- 110.69 -- 0 -- 8.916 -- 38.783 -- 9.823 -- 70.88 -- 24.332 -- 25.55 -- 44.489 -- 111.578 -- 79.839 -- 84.53 -- 93.65 -- 49.578 -- 57.159 -- 18.028 -- 113.791 -- 98.959 -- 115.91
@@ -291,6 +297,7 @@ Incorrect solution. Feasible: True.
  Instance time: 106.539 --- Solver time: 106.542
 92.758 -- 46.307 -- 52.469 -- 0 -- 5.794 -- 56.211 -- 96.311 -- 12.699 -- 61.896 -- 18.836 -- 18.945 -- 98.59 -- 23.652 -- 68.535 -- 105.656 -- 27.338 -- 75.703 -- 36.115 -- 81.128 -- 81.789
 Test 92: small-instance.7.txt 
+Block content exceeds capacity by 7.105427357601002e-15.
 Incorrect solution. Feasible: False.
  Instance time: 104.472 --- Solver time: 104.478
 44.043 -- 51.158 -- 54.252 -- 0 -- 4.462 -- 58.919 -- 59.708 -- 14.141 -- 96.888 -- 65.733 -- 24.125 -- 25.715 -- 103.364 -- 68.772 -- 72.601 -- 32.346 -- 36.016 -- 73.317 -- 79.83 -- 83.27
@@ -303,6 +310,7 @@ Incorrect solution. Feasible: True.
  Instance time: 112.047 --- Solver time: 112.051
 71.652 -- 75.961 -- 78.285 -- 87.282 -- 65.933 -- 95.097 -- 0 -- 103.719 -- 104.677 -- 67.95 -- 9.87 -- 19.668 -- 21.654 -- 108.605 -- 28.917 -- 109.805 -- 35.477 -- 68.783 -- 45.045 -- 51.46
 Test 95: small-instance.72.txt 
+Block content exceeds capacity by 3.552713678800501e-15.
 Incorrect solution. Feasible: False.
  Instance time: 97.131 --- Solver time: 97.131
 0 -- 65.775 -- 3.272 -- 67.839 -- 8.186 -- 40.098 -- 43.386 -- 76.817 -- 78.969 -- 81.778 -- 45.766 -- 48.365 -- 15.52 -- 53.656 -- 85.856 -- 87.168 -- 62.958 -- 17.062 -- 88.384 -- 24.412
@@ -357,6 +365,7 @@ Incorrect solution. Feasible: True.
  Instance time: 123.709 --- Solver time: 123.712
 73.013 -- 0 -- 79.301 -- 4.589 -- 74.584 -- 88.445 -- 42.259 -- 45.624 -- 90.353 -- 95.538 -- 51.286 -- 103.11 -- 58.439 -- 9.096 -- 19.093 -- 64.429 -- 108.923 -- 116.726 -- 23.305 -- 28.175
 Test 111: small-instance.87.txt 
+Block content exceeds capacity by 1.0658141036401503e-14.
 Incorrect solution. Feasible: False.
  Instance time: 113.81 --- Solver time: 113.81
 18.564 -- 82.686 -- 31.171 -- 0 -- 20.139 -- 87.639 -- 33.965 -- 95.422 -- 99.028 -- 108.107 -- 73.796 -- 5.486 -- 9.664 -- 43.156 -- 48.343 -- 12.248 -- 75.792 -- 50.376 -- 58.076 -- 66.232
@@ -373,6 +382,7 @@ Incorrect solution. Feasible: True.
 Test 115: small-instance.90.txt 
 small-instance.90.txt: correct
 Test 116: small-instance.91.txt 
+Block content exceeds capacity by 7.105427357601002e-15.
 Incorrect solution. Feasible: False.
  Instance time: 111.002 --- Solver time: 111.002
 0 -- 8.222 -- 54.006 -- 59.274 -- 82.278 -- 59.707 -- 59.888 -- 13.288 -- 87.695 -- 14.413 -- 103.541 -- 21.082 -- 109.604 -- 30.984 -- 63.715 -- 67.662 -- 73.324 -- 37.453 -- 39.002 -- 76.9
