@@ -24,7 +24,6 @@ instance_count = 0
 for test_instance in object :
     instance_count += 1
     
-    print("Test {}: {}".format(instance_count, test_instance.name))
     output.write("Test {}: {} \n".format(instance_count, test_instance.name))
     
     with open(path_test_instances_dir + "/" + test_instance.name, encoding= 'utf-8-sig') as f:
@@ -81,19 +80,14 @@ for test_instance in object :
                 length = float(length)
                 if length == float('inf'):
                     infinite_interruption = True
-                    # print('infinite interruption present')
                     length = np.Inf
             except:
                 raise ValueError("Wrongful input for interruption length")
             finally:
                 interruptions.append((start_time,length))
     
-        # print("images:",images)
-        # print("interruptions:",interruptions)
-        
         # Interruptions are sorted by their starting times
         interruptions = sorted(interruptions, key=lambda x: x[0])
-        # print("interruptions:",interruptions)
 
         if infinite_interruption == True:
             number_of_blocks = number_of_interruptions
@@ -106,8 +100,6 @@ for test_instance in object :
         blockStarts[0] = 0
         blockstart = 0
     
-        #assert len(interruptions) == number_of_interruptions
-    
         for i in range(number_of_blocks):           
             if i < number_of_interruptions:
                 blocks[i] = interruptions[i][0] - blockstart
@@ -117,9 +109,6 @@ for test_instance in object :
             else:
                 blocks[i] = np.Inf
             
-        # print("block capacities:")
-        # print(blocks)
-         
         ### Computing a solution
         # also measure the computation time
         t_start = time.time()
@@ -141,7 +130,6 @@ for test_instance in object :
                 whichImage = int(np.floor(i / number_of_blocks)) # index starts from 0
                 whichBlock = int(i % number_of_blocks) # in case of 6 blocks: goes from 0 to 5       
                 imageStarts[whichImage] = float(blockStarts[whichBlock])
-                #print(imageStarts[whichImage])
                 if imageStarts[whichImage] > lastImageStart:
                     lastImageStart = imageStarts[whichImage]
                     lastImage = whichImage
@@ -154,7 +142,6 @@ for test_instance in object :
         is_feasible = True
         for i in range(number_of_blocks):
             if block_content[i] > blocks[i]:
-                print("Block content exceeds capacity by {}.\n".format(block_content[i] - blocks[i]))
                 output.write("Block content exceeds capacity by {}.\n".format(block_content[i] - blocks[i]))
                 is_feasible = False
 
@@ -178,16 +165,11 @@ for test_instance in object :
        
         #Compare solution to model solution and write result to output
         if not is_feasible or end_time_testinstance_string != score:
-            print("Incorrect solution. Feasible: {}.\n Instance time: {} --- Solver time: {}".format(is_feasible, end_time_testinstance_string, score))
             output.write("Incorrect solution. Feasible: {}.\n Instance time: {} --- Solver time: {}\n".format(is_feasible, end_time_testinstance_string, score))
-            #solution_str = ""
             for i in range(number_of_images - 1):
                 output.write(str(imageStarts[i]) + " -- ")
-                #solution_str += str(imageStarts[i]) + " -- "
             output.write(str(imageStarts[number_of_images - 1]) + "\n")
-            #print(solution_str.rstrip(' -- ') + "\n")
         else:
-            print(test_instance.name + ": correct") 
             output.write(test_instance.name + ": correct\n")
             # Record input size of problem instance and computation time
             image_counts.append(number_of_images)
